@@ -1,0 +1,36 @@
+import random
+
+# Function to roll the dice
+def roll_dice(sides, rolls):
+    results = []
+    for _ in range(rolls):
+        result = random.randint(1, sides)  # Generates a random number between 1 and the number of sides
+        results.append(result)
+    return results
+
+# Main function for user interaction
+def dice_simulator():
+    print("Dice Rolling Simulator")
+    
+    # Get the number of sides and rolls from the user
+    try:
+        sides = int(input("Enter the number of sides on the dice (e.g., 6 for a standard dice): "))
+        rolls = int(input("Enter the number of rolls: "))
+        
+        if sides < 1 or rolls < 1:
+            print("Please enter valid numbers (sides and rolls should be greater than 0).")
+            return
+        
+        # Simulate the dice rolls
+        results = roll_dice(sides, rolls)
+        
+        # Display the results
+        print(f"\nRolling a {sides}-sided dice {rolls} times:")
+        for i, result in enumerate(results, 1):
+            print(f"Roll {i}: {result}")
+        
+    except ValueError:
+        print("Invalid input. Please enter valid numbers.")
+
+# Run the dice rolling simulator
+dice_simulator()
